@@ -226,392 +226,391 @@
 
         let localJsonData = '';
         
-        async function loadScheduleFromFile() {
+        const embeddedData = {
+            "schedule": [
+                {
+                    "code": "IA",
+                    "session": "Sesión 1",
+                    "topic": "Historia y evolución",
+                    "date": "2025-07-28",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 2",
+                    "topic": "Áreas principales de la IA",
+                    "date": "2025-07-29",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 3",
+                    "topic": "Condiciones del contexto",
+                    "date": "2025-07-30",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 4",
+                    "topic": "Plan de implementación para utilizar la IA ",
+                    "date": "2025-07-31",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 5",
+                    "topic": "Inteligencia artificial generativa ",
+                    "date": "2025-08-01",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 6",
+                    "topic": "Aplicaciones de la IA",
+                    "date": "2025-08-04",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 7",
+                    "topic": "IA en gestión de datos y toma de decisiones",
+                    "date": "2025-08-05",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 8",
+                    "topic": "IA en programación de computadores",
+                    "date": "2025-08-11",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 9",
+                    "topic": "Librerías Python para IA ",
+                    "date": "2025-08-12",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 10",
+                    "topic": "Librerías Scikit-learn y Seaborn",
+                    "date": "2025-08-14",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 11",
+                    "topic": "Análisis descriptivo y diagnóstico",
+                    "date": "2025-08-19",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 12",
+                    "topic": "Análisis predictivo",
+                    "date": "2025-08-20",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 13",
+                    "topic": "Análisis de sentimiento",
+                    "date": "2025-08-22",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 14",
+                    "topic": "Aprendizaje automático ",
+                    "date": "2025-08-25",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 15",
+                    "topic": "Aprendizaje supervisado ",
+                    "date": "2025-08-26",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 16",
+                    "topic": "Aprendizaje no supervisado",
+                    "date": "2025-08-27",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 17",
+                    "topic": "Aprendizaje inductivo",
+                    "date": "2025-08-29",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 18",
+                    "topic": "Aprendizaje por refuerzo",
+                    "date": "2025-09-01",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 19",
+                    "topic": "Machine Learning",
+                    "date": "2025-09-02",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 20",
+                    "topic": "Introducción a chatbots y asistentes virtuales",
+                    "date": "2025-09-03",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 21",
+                    "topic": "Chatbots 01 ",
+                    "date": "2025-09-05",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 22",
+                    "topic": "Chatbots 02",
+                    "date": "2025-09-08",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 23",
+                    "topic": "Asistentes 01",
+                    "date": "2025-09-09",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 24",
+                    "topic": "Asistentes 02",
+                    "date": "2025-09-10",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 25",
+                    "topic": "Asistentes virtuales ",
+                    "date": "2025-09-12",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 26",
+                    "topic": "Reto 1: Ecosistema de campaña publicitaria para industria de manufactura - Planeación de la campaña",
+                    "date": "2025-09-26",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 27",
+                    "topic": "Reto 2: Ecosistema de campaña publicitaria para industria de manufactura - Inventario de recursos",
+                    "date": "2025-09-30",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 28",
+                    "topic": "Reto 3: Ecosistema de campaña publicitaria para industria de manufactura - Ejecución y la finalización de la campaña",
+                    "date": "2025-10-01",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 29",
+                    "topic": "Reto 4: Ecosistema para la prestación de servicios de salud - Asignación de citas",
+                    "date": "2025-10-02",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 30",
+                    "topic": "Reto 5: Ecosistema para la prestación de servicios de salud - Atención a problemas de salud mental",
+                    "date": "2025-10-03",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 31",
+                    "topic": "Reto 6: Ecosistema para la prestación de servicios de salud - Atención de urgencias",
+                    "date": "2025-10-06",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 32",
+                    "topic": "Reto 7: Ecosistema para la prestación de servicios de salud - Intervención quirúrgica ",
+                    "date": "2025-10-07",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 33",
+                    "topic": "Reto 8: Ecosistema de distribución de equipos electrónicos - Computadores ",
+                    "date": "2025-10-08",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 34",
+                    "topic": "Reto 9: Ecosistema de distribución de equipos electrónicos - Accesorios eléctricos",
+                    "date": "2025-10-09",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "IA",
+                    "session": "Sesión 35",
+                    "topic": "Reto 10: Ecosistema de distribución de equipos electrónicos - Domótica",
+                    "date": "2025-10-10",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 1",
+                    "topic": "Fundamentos del Inglés Técnico en Tecnología",
+                    "date": "2025-08-06",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 2",
+                    "topic": "Videojuegos y Tecnologías Asociadas",
+                    "date": "2025-08-08",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 3",
+                    "topic": "Redes Sociales y Comunicación Digital",
+                    "date": "2025-08-13",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 4",
+                    "topic": "Inteligencia Artificial y Robótica",
+                    "date": "2025-08-15",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 5",
+                    "topic": "Programación de Computadores",
+                    "date": "2025-08-21",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 6",
+                    "topic": "Manejo de Imágenes y Videos",
+                    "date": "2025-08-28",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 7",
+                    "topic": "Impacto Social de la Tecnología y Blockchain",
+                    "date": "2025-09-04",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "ING",
+                    "session": "Sesión 8",
+                    "topic": "Internet de las Cosas (IoT) y Revisión General",
+                    "date": "2025-09-11",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "HP",
+                    "session": "Sesión 1",
+                    "topic": "Objetividad(es) y afectividad(es)",
+                    "date": "2025-09-15",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "HP",
+                    "session": "Sesión 2",
+                    "topic": "Comprensión y liderazgo",
+                    "date": "2025-09-18",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "HP",
+                    "session": "Sesión 3",
+                    "topic": "Gestión del conocimiento y cambio comportamental",
+                    "date": "2025-09-22",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "HP",
+                    "session": "Sesión 4",
+                    "topic": "Innovación y creatividad",
+                    "date": "2025-09-25",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "HP",
+                    "session": "Sesión 5",
+                    "topic": "Proyecto final",
+                    "date": "2025-09-29",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "PY",
+                    "session": "Sesión 1",
+                    "topic": "Introducción a la Gestión de Proyectos",
+                    "date": "2025-09-16",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "PY",
+                    "session": "Sesión 2",
+                    "topic": "Planificación y Organización de Proyectos",
+                    "date": "2025-09-17",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "PY",
+                    "session": "Sesión 3",
+                    "topic": "Ejecución y Monitoreo de Proyectos",
+                    "date": "2025-09-19",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "PY",
+                    "session": "Sesión 4",
+                    "topic": "Introducción a la Educación Financiera para Proyectos",
+                    "date": "2025-09-23",
+                    "time": "18:30:00 - 21:30:00"
+                },
+                {
+                    "code": "PY",
+                    "session": "Sesión 5",
+                    "topic": "Gestión Financiera y Estrategias Básicas",
+                    "date": "2025-09-24",
+                    "time": "18:30:00 - 21:30:00"
+                }
+            ],
+            "colors": {
+                "IA": "#005aeb",
+                "ING": "#ff00a2",
+                "HP": "#00db0f",
+                "PY": "#ff6600"
+            }
+        };
 
+        async function loadScheduleFromFile() {
             if (window.location.protocol === 'file:') {
                 console.log('Running locally, using embedded data...');
-
-                const embeddedData = {
-                    "schedule": [
-                        {
-                            "code": "IA",
-                            "session": "Sesión 1",
-                            "topic": "Historia y evolución",
-                            "date": "2025-07-28",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 2",
-                            "topic": "Áreas principales de la IA",
-                            "date": "2025-07-29",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 3",
-                            "topic": "Condiciones del contexto",
-                            "date": "2025-07-30",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 4",
-                            "topic": "Plan de implementación para utilizar la IA ",
-                            "date": "2025-07-31",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 5",
-                            "topic": "Inteligencia artificial generativa ",
-                            "date": "2025-08-01",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 6",
-                            "topic": "Aplicaciones de la IA",
-                            "date": "2025-08-04",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 7",
-                            "topic": "IA en gestión de datos y toma de decisiones",
-                            "date": "2025-08-05",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 8",
-                            "topic": "IA en programación de computadores",
-                            "date": "2025-08-11",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 9",
-                            "topic": "Librerías Python para IA ",
-                            "date": "2025-08-12",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 10",
-                            "topic": "Librerías Scikit-learn y Seaborn",
-                            "date": "2025-08-14",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 11",
-                            "topic": "Análisis descriptivo y diagnóstico",
-                            "date": "2025-08-19",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 12",
-                            "topic": "Análisis predictivo",
-                            "date": "2025-08-20",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 13",
-                            "topic": "Análisis de sentimiento",
-                            "date": "2025-08-22",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 14",
-                            "topic": "Aprendizaje automático ",
-                            "date": "2025-08-25",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 15",
-                            "topic": "Aprendizaje supervisado ",
-                            "date": "2025-08-26",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 16",
-                            "topic": "Aprendizaje no supervisado",
-                            "date": "2025-08-27",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 17",
-                            "topic": "Aprendizaje inductivo",
-                            "date": "2025-08-29",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 18",
-                            "topic": "Aprendizaje por refuerzo",
-                            "date": "2025-09-01",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 19",
-                            "topic": "Machine Learning",
-                            "date": "2025-09-02",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 20",
-                            "topic": "Introducción a chatbots y asistentes virtuales",
-                            "date": "2025-09-03",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 21",
-                            "topic": "Chatbots 01 ",
-                            "date": "2025-09-05",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 22",
-                            "topic": "Chatbots 02",
-                            "date": "2025-09-08",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 23",
-                            "topic": "Asistentes 01",
-                            "date": "2025-09-09",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 24",
-                            "topic": "Asistentes 02",
-                            "date": "2025-09-10",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 25",
-                            "topic": "Asistentes virtuales ",
-                            "date": "2025-09-12",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 26",
-                            "topic": "Reto 1: Ecosistema de campaña publicitaria para industria de manufactura - Planeación de la campaña",
-                            "date": "2025-09-26",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 27",
-                            "topic": "Reto 2: Ecosistema de campaña publicitaria para industria de manufactura - Inventario de recursos",
-                            "date": "2025-09-30",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 28",
-                            "topic": "Reto 3: Ecosistema de campaña publicitaria para industria de manufactura - Ejecución y la finalización de la campaña",
-                            "date": "2025-10-01",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 29",
-                            "topic": "Reto 4: Ecosistema para la prestación de servicios de salud - Asignación de citas",
-                            "date": "2025-10-02",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 30",
-                            "topic": "Reto 5: Ecosistema para la prestación de servicios de salud - Atención a problemas de salud mental",
-                            "date": "2025-10-03",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 31",
-                            "topic": "Reto 6: Ecosistema para la prestación de servicios de salud - Atención de urgencias",
-                            "date": "2025-10-06",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 32",
-                            "topic": "Reto 7: Ecosistema para la prestación de servicios de salud - Intervención quirúrgica ",
-                            "date": "2025-10-07",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 33",
-                            "topic": "Reto 8: Ecosistema de distribución de equipos electrónicos - Computadores ",
-                            "date": "2025-10-08",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 34",
-                            "topic": "Reto 9: Ecosistema de distribución de equipos electrónicos - Accesorios eléctricos",
-                            "date": "2025-10-09",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "IA",
-                            "session": "Sesión 35",
-                            "topic": "Reto 10: Ecosistema de distribución de equipos electrónicos - Domótica",
-                            "date": "2025-10-10",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 1",
-                            "topic": "Fundamentos del Inglés Técnico en Tecnología",
-                            "date": "2025-08-06",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 2",
-                            "topic": "Videojuegos y Tecnologías Asociadas",
-                            "date": "2025-08-08",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 3",
-                            "topic": "Redes Sociales y Comunicación Digital",
-                            "date": "2025-08-13",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 4",
-                            "topic": "Inteligencia Artificial y Robótica",
-                            "date": "2025-08-15",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 5",
-                            "topic": "Programación de Computadores",
-                            "date": "2025-08-21",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 6",
-                            "topic": "Manejo de Imágenes y Videos",
-                            "date": "2025-08-28",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 7",
-                            "topic": "Impacto Social de la Tecnología y Blockchain",
-                            "date": "2025-09-04",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "ING",
-                            "session": "Sesión 8",
-                            "topic": "Internet de las Cosas (IoT) y Revisión General",
-                            "date": "2025-09-11",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "HP",
-                            "session": "Sesión 1",
-                            "topic": "Objetividad(es) y afectividad(es)",
-                            "date": "2025-09-15",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "HP",
-                            "session": "Sesión 2",
-                            "topic": "Comprensión y liderazgo",
-                            "date": "2025-09-18",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "HP",
-                            "session": "Sesión 3",
-                            "topic": "Gestión del conocimiento y cambio comportamental",
-                            "date": "2025-09-22",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "HP",
-                            "session": "Sesión 4",
-                            "topic": "Innovación y creatividad",
-                            "date": "2025-09-25",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "HP",
-                            "session": "Sesión 5",
-                            "topic": "Proyecto final",
-                            "date": "2025-09-29",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "PY",
-                            "session": "Sesión 1",
-                            "topic": "Introducción a la Gestión de Proyectos",
-                            "date": "2025-09-16",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "PY",
-                            "session": "Sesión 2",
-                            "topic": "Planificación y Organización de Proyectos",
-                            "date": "2025-09-17",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "PY",
-                            "session": "Sesión 3",
-                            "topic": "Ejecución y Monitoreo de Proyectos",
-                            "date": "2025-09-19",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "PY",
-                            "session": "Sesión 4",
-                            "topic": "Introducción a la Educación Financiera para Proyectos",
-                            "date": "2025-09-23",
-                            "time": "18:30:00 - 21:30:00"
-                        },
-                        {
-                            "code": "PY",
-                            "session": "Sesión 5",
-                            "topic": "Gestión Financiera y Estrategias Básicas",
-                            "date": "2025-09-24",
-                            "time": "18:30:00 - 21:30:00"
-                        }
-                    ],
-                    "colors": {
-                        "IA": "#005aeb",
-                        "ING": "#ff00a2",
-                        "HP": "#00db0f",
-                        "PY": "#ff6600"
-                    }
-                };
                 localJsonData = JSON.stringify(embeddedData);
                 return localJsonData;
             } else {
@@ -624,9 +623,8 @@
                     localJsonData = data;
                     return data;
                 } catch (error) {
-                    console.error('Error loading schedule.json:', error);
-
-                    localJsonData = JSON.stringify({ schedule: [], colors: {} });
+                    console.error('Error loading schedule.json, using embedded data as fallback:', error);
+                    localJsonData = JSON.stringify(embeddedData);
                     return localJsonData;
                 }
             }
