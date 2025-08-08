@@ -30,16 +30,151 @@
             display: none;
             flex-direction: column;
             flex-grow: 1;
-            transition: opacity 0.5s ease-in-out;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(100%);
+            opacity: 0;
         }
 
         .active-view {
             display: flex;
             opacity: 1;
+            transform: translateX(0);
         }
         
         .fade-out {
             opacity: 0;
+            transform: translateX(-100%);
+        }
+
+        /* Efecto de slide para cambio de vistas */
+        .slide-in-right {
+            animation: slideInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-out-right {
+            animation: slideOutRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .slide-out-left {
+            animation: slideOutLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideOutLeft {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto de zoom para el calendario */
+        .calendar-zoom-in {
+            animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .calendar-zoom-out {
+            animation: zoomOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomOut {
+            from {
+                transform: scale(1);
+                opacity: 1;
+            }
+            to {
+                transform: scale(0.95);
+                opacity: 0;
+            }
+        }
+
+        /* Efecto de pulse para botones */
+        .pulse-effect {
+            animation: pulse 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Efecto de bounce para eventos */
+        .bounce-in {
+            animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .day-cell {
@@ -48,6 +183,12 @@
             min-height: 80px; /* Altura ajustada para pantallas pequeñas */
             display: flex;
             flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .day-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
 
         .event {
@@ -56,11 +197,17 @@
             border-radius: 4px;
             font-size: 0.7rem; /* Fuente ajustada para pantallas pequeñas */
             margin-top: 2px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-            transition: background-color 0.2s ease-in-out;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .event:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
         }
 
         /* Ajustes para pantallas más grandes */
@@ -85,6 +232,207 @@
             margin-bottom: 1rem;
             display: none;
             box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            animation: slideInDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes slideInDown {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Efecto de shimmer para botones */
+        .shimmer-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .shimmer-effect::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .shimmer-effect:hover::before {
+            left: 100%;
+        }
+
+        /* Estilos para el filtro de clases */
+        .filter-btn {
+            position: relative;
+            border: 2px solid transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .filter-btn.active-filter {
+            border-color: #3b82f6;
+            box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+        }
+
+        .filter-btn:not(.active-filter) {
+            opacity: 0.7;
+        }
+
+        .filter-btn:not(.active-filter):hover {
+            opacity: 1;
+        }
+
+        /* Animación para eventos filtrados */
+        .event-filtered {
+            animation: fadeInScale 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .event-hidden {
+            display: none;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Efecto de pulse para botones de filtro */
+        .filter-pulse {
+            animation: filterPulse 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes filterPulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Estilos para las miniaturas */
+        .miniature-calendar {
+            background: white;
+            border-radius: 12px;
+            padding: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .miniature-calendar:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .miniature-calendar.active {
+            border-color: #3b82f6;
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .miniature-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.75rem;
+            color: #3b82f6;
+            margin-bottom: 4px;
+            padding: 2px;
+        }
+
+        .miniature-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            font-size: 0.6rem;
+        }
+
+        .miniature-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2px;
+            font-size: 0.5rem;
+            font-weight: 500;
+        }
+
+        .miniature-day-header {
+            color: #6b7280;
+            font-weight: bold;
+            font-size: 0.4rem;
+        }
+
+        .miniature-day-empty {
+            background: #f9fafb;
+        }
+
+        .miniature-day-number {
+            background: white;
+            color: #374151;
+        }
+
+        .miniature-day-event {
+            background: #3b82f6;
+            color: white;
+            font-size: 0.3rem;
+            position: relative;
+        }
+
+        .miniature-day-event::after {
+            content: '';
+            position: absolute;
+            top: 1px;
+            right: 1px;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .miniature-day-event {
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Animación para cambio de vista */
+        .view-transition {
+            animation: viewTransition 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes viewTransition {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Margen inferior para el contenedor principal */
+        #app-container {
+            margin-bottom: 2rem;
         }
     </style>
 </head>
@@ -95,87 +443,78 @@
 
         <div id="header" class="flex justify-between items-center mb-4">
             <h1 class="text-xl sm:text-2xl md:text-3xl font-bold text-blue-700">Gestor de Calendario</h1>
-            <button id="toggle-view" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none text-xs sm:text-sm">
-                Ir a Calendario
-            </button>
         </div>
 
-        <!-- CSV to JSON Converter View -->
-        <div id="converter-view" class="view-section active-view p-4 bg-white rounded-xl shadow-lg flex-grow">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">CSV a JSON</h2>
-            <p class="text-sm text-gray-600 mb-4">
-                Sube tu archivo CSV. Generará un JSON que puedes copiar para usar en tu proyecto.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-4">
-                <label for="csv-file"
-                    class="cursor-pointer px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors duration-200 focus:outline-none text-sm w-full sm:w-auto text-center">
-                    Cargar CSV
-                    <input type="file" id="csv-file" accept=".csv" class="hidden">
-                </label>
-            </div>
-
-            <div id="alert-message-converter" class="alert-box"></div>
-
-            <div class="flex flex-col lg:flex-row lg:space-x-4 space-y-4 lg:space-y-0 flex-grow">
-                <!-- Color Assignment Panel -->
-                <div class="lg:w-1/3 p-4 border rounded-lg bg-gray-50 flex flex-col">
-                    <h3 class="text-xl font-semibold mb-2">Asignar Colores</h3>
-                    <div id="color-assignment-list" class="space-y-2 overflow-y-auto flex-grow p-2 bg-white rounded-md">
-                        <p class="text-gray-500 text-center text-sm">Carga un CSV para ver los códigos aquí.</p>
-                    </div>
-                </div>
-
-                <!-- JSON Output Panel -->
-                <div class="lg:w-2/3 flex flex-col">
-                    <button id="copy-json"
-                        class="px-4 py-2 mb-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none text-sm">
-                        Copiar JSON
-                    </button>
-                    <textarea id="json-output"
-                        class="w-full flex-grow p-4 border rounded-lg bg-gray-50 text-gray-800 font-mono text-sm resize-none"
-                        placeholder="El JSON generado aparecerá aquí..."></textarea>
-                </div>
+        <!-- Filtro de Clases -->
+        <div id="class-filter" class="mb-4 p-3 bg-white rounded-xl shadow-lg">
+            <h3 class="text-sm font-semibold text-gray-700 mb-2">Filtrar por Clase:</h3>
+            <div id="class-buttons" class="flex flex-wrap gap-2">
+                <button class="filter-btn active-filter px-3 py-1.5 bg-gray-200 text-gray-700 rounded-full hover:bg-gray-300 transition-all duration-200 text-xs font-medium shimmer-effect" data-filter="all">
+                    Todas las Clases
+                </button>
+                <!-- Los botones de clases se generarán dinámicamente -->
             </div>
         </div>
+
+
 
         <!-- Calendar View -->
         <div id="calendar-view" class="view-section">
-            <div class="flex flex-col sm:flex-row items-center justify-between p-2 sm:p-4 mb-4 bg-white rounded-xl shadow-lg space-y-2 sm:space-y-0">
-                <div class="flex items-center space-x-1 sm:space-x-2">
-                    <button id="prev-month" class="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <h2 id="current-month" class="text-lg sm:text-xl md:text-3xl font-bold text-blue-700 text-center"></h2>
-                    <button id="next-month" class="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                        </svg>
+            <!-- Vista de Miniaturas -->
+            <div id="miniatures-view" class="mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-bold text-blue-700">Vista General del Año</h2>
+                    <button id="expand-calendar-btn" class="px-4 py-2 bg-purple-500 text-white rounded-full hover:bg-purple-600 transition-colors duration-200 focus:outline-none text-sm shimmer-effect">
+                        📅 Vista Completa
                     </button>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                    <button id="export-ics-btn" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors duration-200 focus:outline-none text-xs sm:text-sm text-center">
-                        Añadir al Calendario
-                    </button>
-                    <button id="tutorial-btn" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 focus:outline-none text-xs sm:text-sm text-center">
-                        📖 Tutorial
-                    </button>
+                <div id="miniatures-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                    <!-- Las miniaturas se generarán dinámicamente -->
                 </div>
             </div>
-        
-            <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center text-gray-500 font-semibold mb-2 text-xs sm:text-base">
-                <div>D</div>
-                <div>L</div>
-                <div>M</div>
-                <div>X</div>
-                <div>J</div>
-                <div>V</div>
-                <div>S</div>
-            </div>
-        
-            <div id="calendar-grid" class="grid grid-cols-7 gap-1 sm:gap-2 md:gap-4 flex-grow bg-white p-2 sm:p-4 rounded-xl shadow-lg transition-opacity duration-500">
-                <!-- Calendar days will be generated here by JavaScript -->
+
+            <!-- Vista Completa del Calendario -->
+            <div id="full-calendar-view" class="hidden mb-6">
+                <div class="flex flex-col sm:flex-row items-center justify-between p-2 sm:p-4 mb-4 bg-white rounded-xl shadow-lg space-y-2 sm:space-y-0">
+                    <div class="flex items-center space-x-1 sm:space-x-2">
+                        <button id="prev-month" class="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none shimmer-effect">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <h2 id="current-month" class="text-lg sm:text-xl md:text-3xl font-bold text-blue-700 text-center"></h2>
+                        <button id="next-month" class="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-200 focus:outline-none shimmer-effect">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                        <button id="export-ics-btn" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors duration-200 focus:outline-none text-xs sm:text-sm text-center shimmer-effect">
+                            Añadir al Calendario
+                        </button>
+                        <button id="tutorial-btn" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors duration-200 focus:outline-none text-xs sm:text-sm text-center shimmer-effect">
+                            📖 Tutorial
+                        </button>
+                        <button id="back-to-miniatures-btn" class="px-3 py-1.5 sm:px-4 sm:py-2 bg-gray-500 text-white rounded-full hover:bg-gray-600 transition-colors duration-200 focus:outline-none text-xs sm:text-sm text-center shimmer-effect">
+                            ← Volver
+                        </button>
+                    </div>
+                </div>
+            
+                <div class="grid grid-cols-7 gap-1 sm:gap-2 text-center text-gray-500 font-semibold mb-2 text-xs sm:text-base">
+                    <div>D</div>
+                    <div>L</div>
+                    <div>M</div>
+                    <div>X</div>
+                    <div>J</div>
+                    <div>V</div>
+                    <div>S</div>
+                </div>
+            
+                <div id="calendar-grid" class="grid grid-cols-7 gap-1 sm:gap-2 md:gap-4 flex-grow bg-white p-2 sm:p-4 rounded-xl shadow-lg transition-opacity duration-500">
+                    <!-- Calendar days will be generated here by JavaScript -->
+                </div>
             </div>
         </div>
 
@@ -243,15 +582,7 @@
         let currentYear = today.getFullYear();
     
         const appContainer = document.getElementById('app-container');
-        const toggleViewBtn = document.getElementById('toggle-view');
-        const converterView = document.getElementById('converter-view');
         const calendarView = document.getElementById('calendar-view');
-
-        const csvFile = document.getElementById('csv-file');
-        const jsonOutput = document.getElementById('json-output');
-        const copyJsonBtn = document.getElementById('copy-json');
-        const alertConverter = document.getElementById('alert-message-converter');
-        const colorAssignmentList = document.getElementById('color-assignment-list');
 
         const calendarGrid = document.getElementById('calendar-grid');
         const currentMonthDisplay = document.getElementById('current-month');
@@ -271,9 +602,20 @@
         const tutorialModalContainer = document.getElementById('tutorial-modal-container');
         const tutorialCloseBtn = document.getElementById('tutorial-close-btn');
 
+        const classFilter = document.getElementById('class-filter');
+        const classButtons = document.getElementById('class-buttons');
+
+        const miniaturesView = document.getElementById('miniatures-view');
+        const fullCalendarView = document.getElementById('full-calendar-view');
+        const miniaturesGrid = document.getElementById('miniatures-grid');
+        const expandCalendarBtn = document.getElementById('expand-calendar-btn');
+        const backToMiniaturesBtn = document.getElementById('back-to-miniatures-btn');
+
         let scheduleData = [];
         let codeColors = {};
         let uniqueCodes = [];
+        let currentFilter = 'all';
+        let currentView = 'miniatures';
         
 
         let localJsonData = '';
@@ -683,159 +1025,10 @@
         }
 
 
-        function showView(view) {
-            converterView.classList.remove('active-view');
-            calendarView.classList.remove('active-view');
-            if (view === 'converter') {
-                converterView.classList.add('active-view');
-                toggleViewBtn.textContent = 'Ir a Calendario';
-            } else {
-                calendarView.classList.add('active-view');
-                toggleViewBtn.textContent = 'Ir a Conversor';
-                loadScheduleFromJSON();
-            }
-        }
-
-        toggleViewBtn.addEventListener('click', () => {
-            if (converterView.classList.contains('active-view')) {
-                showView('calendar');
-            } else {
-                showView('converter');
-            }
-        });
 
 
-        function showAlert(message, container) {
-            container.textContent = message;
-            container.style.display = 'block';
-            setTimeout(() => {
-                container.style.display = 'none';
-            }, 5000);
-        }
 
-        function parseCsv(csvString) {
-            const lines = csvString.trim().split('\n');
-            if (lines.length <= 1) {
-                showAlert('El archivo CSV está vacío o solo contiene cabeceras.', alertConverter);
-                return { sessions: [], codes: [] };
-            }
 
-            const delimiter = lines[0].includes(';') ? ';' : ',';
-            const headers = lines[0].split(delimiter).map(h => h.trim());
-            const requiredHeaders = ['Código', 'Sesión', 'Tema', 'Fecha', 'Hora Inicio', 'Hora Fin'];
-
-            const hasRequiredHeaders = requiredHeaders.every(h => headers.includes(h));
-            if (!hasRequiredHeaders) {
-                showAlert('El CSV no tiene las cabeceras requeridas. Asegúrate de tener: ' + requiredHeaders.join(', '), alertConverter);
-                return { sessions: [], codes: [] };
-            }
-
-            const headerMap = {
-                'Código': 'code',
-                'Sesión': 'session',
-                'Tema': 'topic',
-                'Fecha': 'date',
-                'Hora Inicio': 'startTime',
-                'Hora Fin': 'endTime',
-            };
-
-            const sessions = [];
-            const codesSet = new Set();
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (line === '') continue;
-
-                const values = line.split(delimiter);
-                if (values.length === headers.length) {
-                    const obj = {};
-                    headers.forEach((header, index) => {
-                        const key = headerMap[header];
-                        if (key) {
-                            obj[key] = values[index].trim();
-                        }
-                    });
-
-                    const sessionObj = {
-                        date: obj.date,
-                        session: obj.session,
-                        topic: obj.topic,
-                        time: `${obj.startTime} - ${obj.endTime}`,
-                        code: obj.code
-                    };
-                    sessions.push(sessionObj);
-                    codesSet.add(obj.code);
-                }
-            }
-            return { sessions: sessions, codes: Array.from(codesSet) };
-        }
-
-        function displayColorAssignment(codes) {
-            colorAssignmentList.innerHTML = '';
-            if (codes.length === 0) {
-                colorAssignmentList.innerHTML = `<p class="text-gray-500 text-center text-sm">Carga un CSV para ver los códigos aquí.</p>`;
-                return;
-            }
-
-            codes.forEach(code => {
-                const randomColor = `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`;
-                const colorItem = document.createElement('div');
-                colorItem.classList.add('flex', 'items-center', 'justify-between', 'py-2', 'border-b', 'border-gray-200');
-                colorItem.innerHTML = `
-                    <span class="text-md font-medium text-gray-700">${code}</span>
-                    <input type="color" value="${codeColors[code] || randomColor}" data-code="${code}" class="w-12 h-8 rounded-md border-none cursor-pointer" />
-                `;
-                colorAssignmentList.appendChild(colorItem);
-            });
-        }
-
-        function generateFinalJson() {
-            const newColors = {};
-            const colorInputs = colorAssignmentList.querySelectorAll('input[type="color"]');
-            colorInputs.forEach(input => {
-                const code = input.getAttribute('data-code');
-                newColors[code] = input.value;
-            });
-
-            const finalData = {
-                schedule: scheduleData,
-                colors: newColors
-            };
-
-            jsonOutput.value = JSON.stringify(finalData, null, 2);
-        }
-
-        csvFile.addEventListener('change', (event) => {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const csvContent = e.target.result;
-                    const result = parseCsv(csvContent);
-                    scheduleData = result.sessions;
-                    uniqueCodes = result.codes;
-                    displayColorAssignment(uniqueCodes);
-                    generateFinalJson();
-                    if (scheduleData.length > 0) {
-                        showAlert('JSON generado con éxito. Cópialo y actualiza el archivo de datos.', alertConverter);
-                    }
-                };
-                reader.readAsText(file);
-            }
-        });
-
-        copyJsonBtn.addEventListener('click', () => {
-            jsonOutput.select();
-            document.execCommand('copy');
-            showAlert('JSON copiado al portapapeles.', alertConverter);
-        });
-
-        colorAssignmentList.addEventListener('change', (event) => {
-            if (event.target.type === 'color') {
-                const code = event.target.getAttribute('data-code');
-                codeColors[code] = event.target.value;
-                generateFinalJson();
-            }
-        });
 
 
         function showModal(sessions) {
@@ -967,15 +1160,24 @@
                 const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
                 const sessionsForDay = scheduleData.filter(s => s.date === dateKey);
 
-                sessionsForDay.forEach(session => {
+                sessionsForDay.forEach((session, index) => {
                     const eventDiv = document.createElement('div');
                     eventDiv.style.backgroundColor = codeColors[session.code] || '#9ca3af';
                     eventDiv.classList.add('event', 'cursor-pointer');
+                    eventDiv.setAttribute('data-code', session.code);
                     eventDiv.textContent = session.topic;
                     eventDiv.title = `${session.session} - ${session.topic}`;
                     
+                    // Aplicar efecto de bounce con delay escalonado
+                    setTimeout(() => {
+                        eventDiv.classList.add('bounce-in');
+                    }, index * 100);
+                    
                     eventDiv.addEventListener('click', (e) => {
                         e.stopPropagation();
+                        // Efecto de pulse al hacer clic
+                        eventDiv.classList.add('pulse-effect');
+                        setTimeout(() => eventDiv.classList.remove('pulse-effect'), 300);
                         showModal(session);
                     });
 
@@ -994,7 +1196,18 @@
         }
     
         function animateCalendarChange(direction) {
-            calendarView.classList.add('fade-out');
+            // Aplicar efecto de zoom out
+            calendarGrid.classList.add('calendar-zoom-out');
+            
+            // Efecto de pulse en los botones
+            if (direction === 'next') {
+                nextMonthBtn.classList.add('pulse-effect');
+                setTimeout(() => nextMonthBtn.classList.remove('pulse-effect'), 300);
+            } else {
+                prevMonthBtn.classList.add('pulse-effect');
+                setTimeout(() => prevMonthBtn.classList.remove('pulse-effect'), 300);
+            }
+            
             setTimeout(() => {
                 if (direction === 'next') {
                     currentMonth = (currentMonth + 1) % 12;
@@ -1004,13 +1217,240 @@
                     if (currentMonth === 11) currentYear--;
                 }
                 renderCalendar(currentMonth, currentYear);
-                calendarView.classList.remove('fade-out');
-            }, 300);
+                
+                // Aplicar efecto de zoom in
+                calendarGrid.classList.remove('calendar-zoom-out');
+                calendarGrid.classList.add('calendar-zoom-in');
+                
+                setTimeout(() => {
+                    calendarGrid.classList.remove('calendar-zoom-in');
+                }, 400);
+            }, 200);
         }
     
         prevMonthBtn.addEventListener('click', () => animateCalendarChange('prev'));
         nextMonthBtn.addEventListener('click', () => animateCalendarChange('next'));
 
+        // Event listeners para navegación entre vistas
+        expandCalendarBtn.addEventListener('click', () => {
+            expandCalendarBtn.classList.add('pulse-effect');
+            setTimeout(() => expandCalendarBtn.classList.remove('pulse-effect'), 300);
+            showFullCalendarView();
+        });
+
+        backToMiniaturesBtn.addEventListener('click', () => {
+            backToMiniaturesBtn.classList.add('pulse-effect');
+            setTimeout(() => backToMiniaturesBtn.classList.remove('pulse-effect'), 300);
+            showMiniaturesView();
+        });
+
+
+        function generateClassFilterButtons() {
+            // Limpiar botones existentes excepto "Todas las Clases"
+            const allButton = classButtons.querySelector('[data-filter="all"]');
+            classButtons.innerHTML = '';
+            classButtons.appendChild(allButton);
+
+            // Agregar evento al botón "Todas las Clases"
+            allButton.addEventListener('click', () => {
+                // Remover clase activa de todos los botones
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active-filter');
+                });
+                
+                // Agregar clase activa al botón "Todas las Clases"
+                allButton.classList.add('active-filter');
+                
+                // Aplicar efecto de pulse
+                allButton.classList.add('filter-pulse');
+                setTimeout(() => allButton.classList.remove('filter-pulse'), 300);
+                
+                // Aplicar filtro
+                currentFilter = 'all';
+                applyFilter();
+            });
+
+            // Generar botones para cada clase
+            Object.keys(codeColors).forEach(code => {
+                const button = document.createElement('button');
+                button.className = 'filter-btn px-3 py-1.5 rounded-full transition-all duration-200 text-xs font-medium shimmer-effect';
+                button.setAttribute('data-filter', code);
+                button.style.backgroundColor = codeColors[code];
+                button.style.color = '#ffffff';
+                button.textContent = code;
+                
+                // Efecto de pulse al hacer clic
+                button.addEventListener('click', () => {
+                    // Remover clase activa de todos los botones
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active-filter');
+                    });
+                    
+                    // Agregar clase activa al botón clickeado
+                    button.classList.add('active-filter');
+                    
+                    // Aplicar efecto de pulse
+                    button.classList.add('filter-pulse');
+                    setTimeout(() => button.classList.remove('filter-pulse'), 300);
+                    
+                    // Aplicar filtro
+                    currentFilter = code;
+                    applyFilter();
+                });
+                
+                classButtons.appendChild(button);
+            });
+        }
+
+        function generateMiniatures() {
+            miniaturesGrid.innerHTML = '';
+            
+            for (let month = 0; month < 12; month++) {
+                const miniature = document.createElement('div');
+                miniature.className = 'miniature-calendar';
+                miniature.setAttribute('data-month', month);
+                
+                const monthName = monthNames[month];
+                const year = currentYear;
+                
+                // Crear header de la miniatura
+                const header = document.createElement('div');
+                header.className = 'miniature-header';
+                header.textContent = monthName;
+                
+                // Crear grid de días
+                const daysGrid = document.createElement('div');
+                daysGrid.className = 'miniature-days';
+                
+                // Agregar headers de días de la semana
+                const dayHeaders = ['D', 'L', 'M', 'X', 'J', 'V', 'S'];
+                dayHeaders.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'miniature-day miniature-day-header';
+                    dayHeader.textContent = day;
+                    daysGrid.appendChild(dayHeader);
+                });
+                
+                // Generar días del mes
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const startDay = firstDay.getDay();
+                const endDate = lastDay.getDate();
+                
+                // Agregar días vacíos al inicio
+                for (let i = 0; i < startDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'miniature-day miniature-day-empty';
+                    daysGrid.appendChild(emptyDay);
+                }
+                
+                // Agregar días del mes
+                for (let i = 1; i <= endDate; i++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.className = 'miniature-day miniature-day-number';
+                    dayCell.textContent = i;
+                    
+                    // Verificar si hay eventos en este día
+                    const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                    const sessionsForDay = scheduleData.filter(s => s.date === dateKey);
+                    
+                    if (sessionsForDay.length > 0) {
+                        dayCell.classList.remove('miniature-day-number');
+                        dayCell.classList.add('miniature-day-event');
+                        
+                        // Aplicar color del primer evento del día y agregar data-code
+                        const firstEvent = sessionsForDay[0];
+                        dayCell.style.backgroundColor = codeColors[firstEvent.code] || '#3b82f6';
+                        dayCell.setAttribute('data-code', firstEvent.code);
+                    }
+                    
+                    daysGrid.appendChild(dayCell);
+                }
+                
+                miniature.appendChild(header);
+                miniature.appendChild(daysGrid);
+                
+                // Evento de clic para expandir la miniatura
+                miniature.addEventListener('click', () => {
+                    currentMonth = month;
+                    currentYear = year;
+                    showFullCalendarView();
+                });
+                
+                miniaturesGrid.appendChild(miniature);
+            }
+            
+            // Aplicar filtro actual después de generar las miniaturas
+            if (currentFilter !== 'all') {
+                applyFilter();
+            }
+        }
+
+        function showFullCalendarView() {
+            miniaturesView.classList.add('hidden');
+            fullCalendarView.classList.remove('hidden');
+            fullCalendarView.classList.add('view-transition');
+            currentView = 'full';
+            
+            // Renderizar el calendario completo
+            renderCalendar(currentMonth, currentYear);
+            
+            // Aplicar filtro actual si existe
+            if (currentFilter !== 'all') {
+                applyFilter();
+            }
+        }
+
+        function showMiniaturesView() {
+            fullCalendarView.classList.add('hidden');
+            miniaturesView.classList.remove('hidden');
+            miniaturesView.classList.add('view-transition');
+            currentView = 'miniatures';
+            
+            // Regenerar miniaturas para reflejar cambios
+            generateMiniatures();
+        }
+
+        function applyFilter() {
+            // Aplicar filtro a eventos en vista completa
+            const events = document.querySelectorAll('.event');
+            
+            events.forEach(event => {
+                const eventCode = event.getAttribute('data-code');
+                
+                if (currentFilter === 'all' || eventCode === currentFilter) {
+                    event.classList.remove('event-hidden');
+                    event.classList.add('event-filtered');
+                } else {
+                    event.classList.add('event-hidden');
+                    event.classList.remove('event-filtered');
+                }
+            });
+            
+            // Aplicar filtro a miniaturas
+            const miniatureDays = document.querySelectorAll('.miniature-day-event');
+            
+            miniatureDays.forEach(day => {
+                const dayCode = day.getAttribute('data-code');
+                
+                if (currentFilter === 'all' || dayCode === currentFilter) {
+                    day.style.opacity = '1';
+                    day.style.visibility = 'visible';
+                    day.style.transform = 'scale(1)';
+                } else {
+                    day.style.opacity = '0.2';
+                    day.style.visibility = 'visible';
+                    day.style.transform = 'scale(0.8)';
+                }
+            });
+            
+            // Remover clase de animación después de completar
+            setTimeout(() => {
+                events.forEach(event => {
+                    event.classList.remove('event-filtered');
+                });
+            }, 400);
+        }
 
         async function loadScheduleFromJSON() {
             try {
@@ -1018,26 +1458,36 @@
                 const data = JSON.parse(localJsonData);
                 scheduleData = data.schedule;
                 codeColors = data.colors;
-                renderCalendar(currentMonth, currentYear);
+                generateClassFilterButtons();
+                generateMiniatures();
+                
+                if (currentView === 'full') {
+                    renderCalendar(currentMonth, currentYear);
+                }
             } catch (e) {
                 console.error("Error al parsear el JSON de datos:", e);
                 scheduleData = [];
                 codeColors = {};
-                renderCalendar(currentMonth, currentYear);
+                generateMiniatures();
+                
+                if (currentView === 'full') {
+                    renderCalendar(currentMonth, currentYear);
+                }
             }
         }
 
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const showConverter = urlParams.get('conversor') === 'true';
-
-        if (showConverter) {
-            toggleViewBtn.style.display = 'block';
-            showView('converter');
-        } else {
-            toggleViewBtn.style.display = 'none';
-            showView('calendar');
+        // Función para inicializar con animación
+        function initializeApp() {
+            classFilter.style.display = 'block';
+            calendarView.classList.add('active-view');
+            
+            // Cargar datos y mostrar miniaturas
+            loadScheduleFromJSON();
         }
+
+        // Inicializar después de un pequeño delay para permitir que las animaciones se carguen
+        setTimeout(initializeApp, 100);
     </script>
 
 </body>
